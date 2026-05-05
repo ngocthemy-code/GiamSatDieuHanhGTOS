@@ -258,8 +258,8 @@ export const YardMonitoring: React.FC<YardMonitoringProps> = ({
                                   <tr key={item.id} className="hover:bg-sky-50/20 transition-colors group/row">
                                     <td className="px-4 py-3 text-sm font-semibold text-gray-900 text-center border-r border-slate-100">{idx + 1}</td>
                                     <td className="px-4 py-3 text-sm font-semibold text-gray-900">{item.tau}</td>
-                                    <td className="px-4 py-3 text-sm font-medium text-sky-600 font-mono">{item.soXe}</td>
-                                    <td className="px-4 py-3 text-sm font-normal text-gray-500 font-mono">{item.soRomooc}</td>
+                                    <td className="px-4 py-3 text-sm font-medium text-sky-600 font-mono whitespace-nowrap">{item.soXe}</td>
+                                    <td className="px-4 py-3 text-sm font-normal text-gray-500 font-mono whitespace-nowrap">{item.soRomooc}</td>
                                     <td className="px-4 py-3">
                                       <div className="text-sm font-medium text-gray-900">{item.tenHang}</div>
                                       <div className="text-xs text-gray-500 capitalize">{item.loaiHang}</div>
