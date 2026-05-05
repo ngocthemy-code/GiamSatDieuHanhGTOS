@@ -1,0 +1,6 @@
+{
+  "name": "SmartPort - Quản lý Cửa cổng",
+  "description": "Hệ thống quản lý điều hành cổng cảng hàng rời hiện đại, tích hợp theo dõi vị trí kho bãi và hàng hóa thời gian thực.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

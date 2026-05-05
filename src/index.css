@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-port-blue-950: #0f172a;
+  --color-port-blue-900: #1e3a8a;
+  --color-port-blue-800: #1e40af;
+  --color-port-blue-700: #1d4ed8;
+  --color-port-blue-600: #2563eb;
+  --color-port-blue-50: #eff6ff;
+  
+  --color-sidebar-bg: #1e293b;
+  --color-sidebar-item: #334155;
+  --color-sidebar-hover: #475569;
+  --color-sidebar-text: #94a3b8;
+  --color-sidebar-text-active: #f1f5f9;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased h-screen overflow-hidden;
+  }
+}
+
+@layer components {
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sidebar-text hover:text-sidebar-text-active hover:bg-sidebar-hover transition-all duration-200 text-sm font-medium;
+  }
+  
+  .sidebar-link-active {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg bg-sky-600 text-white hover:bg-sky-500 shadow-lg shadow-sky-600/20 transition-all duration-200 text-sm font-medium;
+  }
+
+  .data-grid-header {
+    @apply bg-slate-100 text-slate-500 font-bold uppercase text-[10px] tracking-widest py-3 px-4 border-b border-slate-200 whitespace-nowrap text-left;
+  }
+  
+  .data-grid-cell {
+    @apply py-3 px-4 border-b border-slate-100 text-[13px] text-slate-600 font-medium whitespace-nowrap;
+  }
+
+  .action-btn-outline {
+    @apply px-4 py-1.5 rounded-md border text-xs font-bold transition-all hover:shadow-md flex items-center gap-2;
+  }
+}
