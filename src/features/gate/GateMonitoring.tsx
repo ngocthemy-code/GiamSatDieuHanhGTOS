@@ -212,8 +212,8 @@ export const GateMonitoring: React.FC<GateMonitoringProps> = ({
                       <td className="px-4 py-3 text-sm font-normal text-gray-700">{row.soLenh}</td>
                       <td className="px-4 py-3 text-sm font-medium text-sky-600 font-mono">{row.soXe}</td>
                       <td className="px-4 py-3 text-sm font-normal text-gray-500 font-mono">{row.soRomooc}</td>
-                      <td className="px-4 py-3">
-                        <span className={`inline-block px-1.5 py-0.5 rounded-md text-sm font-medium normal-case transition-all ${row.tacNghiep.includes('BÃI') ? 'bg-amber-50 text-amber-600 border border-amber-100' :
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        <span className={`inline-block px-1.5 py-0.5 rounded-md text-sm font-medium normal-case transition-all whitespace-nowrap ${row.tacNghiep.includes('BÃI') ? 'bg-amber-50 text-amber-600 border border-amber-100' :
                           row.tacNghiep.includes('GIAO THẲNG') ? 'bg-blue-50 text-blue-600 border border-blue-100' :
                             'bg-slate-50 text-slate-500 border border-slate-100'
                           }`}>

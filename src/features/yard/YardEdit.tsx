@@ -169,19 +169,19 @@ export const YardEdit: React.FC<YardEditProps> = ({
                           <span className="text-sm font-medium text-indigo-600 normal-case">{item.phuongAn}</span>
                         </td>
 
-                        <td className="px-4 py-3">
+                        <td className="px-4 py-3 whitespace-nowrap">
                           {isRowEditing ? (
                             <input defaultValue={item.soXe} className="w-24 bg-white border-2 border-blue-500 rounded px-2 py-1 text-sm font-medium text-blue-600 focus:outline-none" />
                           ) : (
-                            <span className="text-sm font-medium text-blue-600 font-mono">{item.soXe}</span>
+                            <span className="text-sm font-medium text-blue-600 font-mono whitespace-nowrap">{item.soXe}</span>
                           )}
                         </td>
 
-                        <td className="px-4 py-3">
+                        <td className="px-4 py-3 whitespace-nowrap">
                           {isRowEditing ? (
                             <input defaultValue={item.soRomooc} className="w-24 bg-white border-2 border-blue-500 rounded px-2 py-1 text-sm font-normal text-gray-700 focus:outline-none font-mono" />
                           ) : (
-                            <span className="text-sm text-gray-500 font-mono">{item.soRomooc}</span>
+                            <span className="text-sm text-gray-500 font-mono whitespace-nowrap">{item.soRomooc}</span>
                           )}
                         </td>
 

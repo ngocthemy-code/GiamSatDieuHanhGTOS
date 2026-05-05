@@ -169,19 +169,19 @@ export const BerthEdit: React.FC<BerthEditProps> = ({
                           )}
                         </td>
 
-                        <td className="px-4 py-4">
+                        <td className="px-4 py-4 whitespace-nowrap">
                           {isRowEditing ? (
                             <input defaultValue={item.soXe} className="w-24 bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-medium text-blue-600 transition-all outline-none" />
                           ) : (
-                            <span className="font-mono font-medium text-sm text-blue-600">{item.soXe}</span>
+                            <span className="font-mono font-medium text-sm text-blue-600 whitespace-nowrap">{item.soXe}</span>
                           )}
                         </td>
 
-                        <td className="px-4 py-4">
+                        <td className="px-4 py-4 whitespace-nowrap">
                           {isRowEditing ? (
                             <input defaultValue={item.soRomooc} className="w-24 bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-500 transition-all outline-none" />
                           ) : (
-                            <span className="font-mono font-normal text-sm text-gray-500">{item.soRomooc}</span>
+                            <span className="font-mono font-normal text-sm text-gray-500 whitespace-nowrap">{item.soRomooc}</span>
                           )}
                         </td>
 

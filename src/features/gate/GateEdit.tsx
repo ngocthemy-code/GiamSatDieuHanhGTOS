@@ -154,7 +154,7 @@ export const GateEdit: React.FC<GateEditProps> = ({
                             <span className="text-sm font-normal text-gray-700">{row.soLenh}</span>
                           )}
                         </td>
-                        <td className="px-4 py-4">
+                        <td className="px-4 py-4 whitespace-nowrap">
                           {isEditing ? (
                             <input
                               type="text"
@@ -163,14 +163,14 @@ export const GateEdit: React.FC<GateEditProps> = ({
                               className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-medium text-blue-600 w-28 transition-all outline-none"
                             />
                           ) : (
-                            <span className="text-sm font-medium text-blue-600 font-mono">{row.soXe}</span>
+                            <span className="text-sm font-medium text-blue-600 font-mono whitespace-nowrap">{row.soXe}</span>
                           )}
                         </td>
-                        <td className="px-4 py-4">
+                        <td className="px-4 py-4 whitespace-nowrap">
                           {isEditing ? (
                             <input defaultValue={row.soRomooc} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-500 w-28 transition-all outline-none" />
                           ) : (
-                            <span className="text-sm text-gray-500 font-mono">{row.soRomooc}</span>
+                            <span className="text-sm text-gray-500 font-mono whitespace-nowrap">{row.soRomooc}</span>
                           )}
                         </td>
                         <td className="px-4 py-4">
