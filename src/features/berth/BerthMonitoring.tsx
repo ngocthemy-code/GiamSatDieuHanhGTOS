@@ -214,12 +214,13 @@ export const BerthMonitoring: React.FC<BerthMonitoringProps> = ({
                       <ArrowRightLeft size={12} className={isExpanded ? '' : 'rotate-90'} />
                     </motion.div>
 
-                    <div>
+                    <div className="flex flex-row items-center flex-wrap">
                       <div className="flex items-center gap-2">
                         <Ship size={18} className="text-slate-400" />
                         <span className="text-lg font-bold text-slate-800 tracking-tight">{group.tau}</span>
                       </div>
-                      <div className="flex items-center gap-2 mt-1.5">
+                      
+                      <div className="ml-4 pl-4 border-l-2 border-gray-300 flex items-center gap-2">
                         <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Chứng từ:</span>
                         <span className={`text-sm font-bold font-mono px-1.5 py-0.5 rounded transition-colors ${isExpanded ? 'text-sky-600 bg-sky-100/50' : 'text-blue-600 hover:bg-blue-50 underline'
                           }`}>
@@ -294,8 +295,8 @@ export const BerthMonitoring: React.FC<BerthMonitoringProps> = ({
                                   <td className="px-4 py-3 text-sm font-normal text-gray-500 font-mono">{item.soRomooc}</td>
                                   <td className="px-4 py-3 text-sm font-semibold text-gray-900">{item.tenHang}</td>
                                   <td className="px-4 py-3 text-xs text-gray-500 capitalize">{item.loaiHang}</td>
-                                  <td className="px-4 py-3 text-center">
-                                    <span className={`px-1.5 py-0.5 rounded-md text-sm font-medium normal-case ${item.tacNghiep.includes('NHẬP') ? 'bg-amber-50 text-amber-600 border border-amber-100' :
+                                  <td className="px-4 py-3 text-center whitespace-nowrap">
+                                    <span className={`px-1.5 py-0.5 rounded-md text-sm font-medium normal-case whitespace-nowrap ${item.tacNghiep.includes('NHẬP') ? 'bg-amber-50 text-amber-600 border border-amber-100' :
                                       item.tacNghiep.includes('XUẤT') ? 'bg-blue-50 text-blue-600 border border-blue-100' :
                                         'bg-green-50 text-green-600 border border-green-100'
                                       }`}>
