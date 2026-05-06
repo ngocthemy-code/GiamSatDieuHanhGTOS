@@ -20,7 +20,7 @@ export const berthGroups: BerthGroup[] = [
     items: [
       { id: 'b1-1', saLan: 'SL-01', soXe: '51C-123.45', soRomooc: '51R-001.22', cauBo: 'CB-01', toDoi: 'Tổ 1', xeNangHam: 'NH-05', xeNangBai: 'NB-12', bangTai: '---', xeXuc: 'XX-02', xeUi: '---', mayDao: '---', tenHang: 'Sắt ống', loaiHang: 'Sắt thép', tacNghiep: 'NHẬP GIAO THẲNG', trongLuong: '25.5 Tấn', soLuong: '12 Bó', viTri: 'KHO-A1', thoiGianHoanTat: '28-04-2024 16:20' },
       { id: 'b1-2', saLan: 'SL-01', soXe: '51C-999.00', soRomooc: '51R-007.66', cauBo: 'CB-01', toDoi: 'Tổ 1', xeNangHam: 'NH-05', xeNangBai: 'NB-12', bangTai: '---', xeXuc: 'XX-02', xeUi: '---', mayDao: '---', tenHang: 'Sắt ống', loaiHang: 'Sắt thép', tacNghiep: 'NHẬP GIAO THẲNG', trongLuong: '24.2 Tấn', soLuong: '11 Bó', viTri: 'KHO-A1', thoiGianHoanTat: '28-04-2024 16:20' },
-      { id: 'b1-3', saLan: 'SL-02', soXe: '---', soRomooc: '---', cauBo: 'CB-02', toDoi: 'Tổ 2', xeNangHam: 'NH-03', xeNangBai: '---', bangTai: '---', xeXuc: '---', xeUi: '---', mayDao: '---', tenHang: 'Sắt thép rời', loaiHang: 'Sắt thép', tacNghiep: 'DỠ TÀU', trongLuong: '150 Tấn', soLuong: '---', viTri: 'SL-02', thoiGianHoanTat: '28-04-2024 17:15' },
+      { id: 'b1-3', saLan: 'SL-02', soXe: '---', soRomooc: '---', cauBo: 'CB-02', toDoi: 'Tổ 2', xeNangHam: 'NH-03', xeNangBai: '---', bangTai: '---', xeXuc: '---', xeUi: '---', mayDao: '---', tenHang: 'Sắt thép rời', loaiHang: 'Sắt thép', tacNghiep: 'NHẬP BÃI', trongLuong: '150 Tấn', soLuong: '---', viTri: 'SL-02', thoiGianHoanTat: '28-04-2024 17:15' },
     ]
   },
   {
@@ -30,8 +30,8 @@ export const berthGroups: BerthGroup[] = [
     loaiChungTu: 'Xuất khẩu',
     totalTrips: 2,
     items: [
-      { id: 'b2-1', saLan: 'SL-08', soXe: '29H-567.89', soRomooc: '29R-005.43', cauBo: 'CB-02', toDoi: 'Tổ 3', xeNangHam: '---', xeNangBai: 'NB-05', bangTai: 'BT-01', xeXuc: '---', xeUi: 'XU-01', mayDao: 'MD-02', tenHang: 'Ngô hạt', loaiHang: 'Nông sản', tacNghiep: 'XUẤT TÀU', trongLuong: '30.0 Tấn', soLuong: '600 Bao', viTri: 'KHO-B3', thoiGianHoanTat: '28-04-2024 14:45' },
-      { id: 'b2-2', saLan: 'SL-08', soXe: '72C-555.66', soRomooc: '72R-003.88', cauBo: 'CB-02', toDoi: 'Tổ 3', xeNangHam: '---', xeNangBai: 'NB-05', bangTai: 'BT-01', xeXuc: '---', xeUi: 'XU-01', mayDao: 'MD-02', tenHang: 'Ngô hạt', loaiHang: 'Nông sản', tacNghiep: 'XUẤT TÀU', trongLuong: '32.5 Tấn', soLuong: '650 Bao', viTri: 'KHO-B3', thoiGianHoanTat: '28-04-2024 14:45' },
+      { id: 'b2-1', saLan: 'SL-08', soXe: '29H-567.89', soRomooc: '29R-005.43', cauBo: 'CB-02', toDoi: 'Tổ 3', xeNangHam: '---', xeNangBai: 'NB-05', bangTai: 'BT-01', xeXuc: '---', xeUi: 'XU-01', mayDao: 'MD-02', tenHang: 'Ngô hạt', loaiHang: 'Nông sản', tacNghiep: 'XUẤT BÃI TÀU', trongLuong: '30.0 Tấn', soLuong: '600 Bao', viTri: 'KHO-B3', thoiGianHoanTat: '28-04-2024 14:45' },
+      { id: 'b2-2', saLan: 'SL-08', soXe: '72C-555.66', soRomooc: '72R-003.88', cauBo: 'CB-02', toDoi: 'Tổ 3', xeNangHam: '---', xeNangBai: 'NB-05', bangTai: 'BT-01', xeXuc: '---', xeUi: 'XU-01', mayDao: 'MD-02', tenHang: 'Ngô hạt', loaiHang: 'Nông sản', tacNghiep: 'XUẤT BÃI TÀU', trongLuong: '32.5 Tấn', soLuong: '650 Bao', viTri: 'KHO-B3', thoiGianHoanTat: '28-04-2024 14:45' },
     ]
   },
   {
@@ -51,8 +51,8 @@ export const berthGroups: BerthGroup[] = [
     loaiChungTu: 'Xuất khẩu',
     totalTrips: 2,
     items: [
-      { id: 'b4-1', saLan: 'SL-05', soXe: '43C-888.99', soRomooc: '43R-002.55', cauBo: 'CB-03', toDoi: 'Tổ 4', xeNangHam: '---', xeNangBai: 'NB-20', bangTai: 'BT-02', xeXuc: '---', xeUi: 'XU-02', mayDao: 'MD-05', tenHang: 'Than đá', loaiHang: 'Khoáng sản', tacNghiep: 'XUẤT TÀU', trongLuong: '35.0 Tấn', soLuong: 'Rời', viTri: 'BAI-C1', thoiGianHoanTat: '28-04-2024 12:40' },
-      { id: 'b4-2', saLan: 'SL-05', soXe: '43C-111.22', soRomooc: '43R-005.11', cauBo: 'CB-03', toDoi: 'Tổ 4', xeNangHam: '---', xeNangBai: 'NB-20', bangTai: 'BT-02', xeXuc: '---', xeUi: 'XU-02', mayDao: 'MD-05', tenHang: 'Than đá', loaiHang: 'Khoáng sản', tacNghiep: 'XUẤT TÀU', trongLuong: '34.5 Tấn', soLuong: 'Rời', viTri: 'BAI-C1', thoiGianHoanTat: '28-04-2024 12:40' },
+      { id: 'b4-1', saLan: 'SL-05', soXe: '43C-888.99', soRomooc: '43R-002.55', cauBo: 'CB-03', toDoi: 'Tổ 4', xeNangHam: '---', xeNangBai: 'NB-20', bangTai: 'BT-02', xeXuc: '---', xeUi: 'XU-02', mayDao: 'MD-05', tenHang: 'Than đá', loaiHang: 'Khoáng sản', tacNghiep: 'XUẤT BÃI TÀU', trongLuong: '35.0 Tấn', soLuong: 'Rời', viTri: 'BAI-C1', thoiGianHoanTat: '28-04-2024 12:40' },
+      { id: 'b4-2', saLan: 'SL-05', soXe: '43C-111.22', soRomooc: '43R-005.11', cauBo: 'CB-03', toDoi: 'Tổ 4', xeNangHam: '---', xeNangBai: 'NB-20', bangTai: 'BT-02', xeXuc: '---', xeUi: 'XU-02', mayDao: 'MD-05', tenHang: 'Than đá', loaiHang: 'Khoáng sản', tacNghiep: 'XUẤT BÃI TÀU', trongLuong: '34.5 Tấn', soLuong: 'Rời', viTri: 'BAI-C1', thoiGianHoanTat: '28-04-2024 12:40' },
     ]
   },
   {
@@ -72,7 +72,7 @@ export const berthGroups: BerthGroup[] = [
     loaiChungTu: 'Xuất khẩu',
     totalTrips: 1,
     items: [
-      { id: 'b6-1', saLan: 'SL-07', soXe: '60C-123.45', soRomooc: '60R-001.22', cauBo: 'CB-03', toDoi: 'Tổ 4', xeNangHam: '---', xeNangBai: 'NB-21', bangTai: 'BT-02', xeXuc: '---', xeUi: 'XU-02', mayDao: 'MD-05', tenHang: 'Than cám', loaiHang: 'Khoáng sản', tacNghiep: 'XUẤT TÀU', trongLuong: '33.2 Tấn', soLuong: 'Rời', viTri: 'BAI-C1', thoiGianHoanTat: '28-04-2024 12:40' },
+      { id: 'b6-1', saLan: 'SL-07', soXe: '60C-123.45', soRomooc: '60R-001.22', cauBo: 'CB-03', toDoi: 'Tổ 4', xeNangHam: '---', xeNangBai: 'NB-21', bangTai: 'BT-02', xeXuc: '---', xeUi: 'XU-02', mayDao: 'MD-05', tenHang: 'Than cám', loaiHang: 'Khoáng sản', tacNghiep: 'XUẤT BÃI TÀU', trongLuong: '33.2 Tấn', soLuong: 'Rời', viTri: 'BAI-C1', thoiGianHoanTat: '28-04-2024 12:40' },
     ]
   }
 ];

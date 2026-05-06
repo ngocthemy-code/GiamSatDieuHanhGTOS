@@ -39,7 +39,7 @@ export const BerthEdit: React.FC<BerthEditProps> = ({
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const allItems = berthGroups.flatMap(group =>
-    group.items.map(item => ({ ...item, vesselName: group.tau }))
+    group.items.map(item => ({ ...item, vesselName: group.tau, direction: group.loaiChungTu }))
   );
 
   const filteredData = allItems.filter(item => {
@@ -107,6 +107,9 @@ export const BerthEdit: React.FC<BerthEditProps> = ({
                       <div className="flex items-center justify-between gap-2">Tàu/chuyến <ArrowUpDown size={14} className="text-slate-400" /></div>
                     </th>
                     <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">Sà lan <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
                       <div className="flex items-center justify-between gap-2">Số xe <ArrowUpDown size={14} className="text-slate-400" /></div>
                     </th>
                     <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
@@ -172,6 +175,14 @@ export const BerthEdit: React.FC<BerthEditProps> = ({
                           {item.vesselName}
                         </td>
 
+                        <td className="px-4 py-4">
+                          {isRowEditing ? (
+                            <input defaultValue={item.saLan} className="w-16 bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm font-normal text-gray-700">{item.saLan}</span>
+                          )}
+                        </td>
+
                         <td className="px-4 py-4 whitespace-nowrap">
                           {isRowEditing ? (
                             <input defaultValue={item.soXe} className="w-24 bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-medium text-blue-600 transition-all outline-none" />
@@ -210,10 +221,18 @@ export const BerthEdit: React.FC<BerthEditProps> = ({
 
                         <td className="px-4 py-4">
                           {isRowEditing ? (
-                            <select className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-1 py-1 text-sm font-medium text-sky-700 transition-all outline-none">
-                              <option>NHẬP GIAO THẲNG</option>
-                              <option>NHẬP BÃI</option>
-                              <option>DỠ TÀU</option>
+                            <select defaultValue={item.tacNghiep} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-1 py-1 text-sm font-medium text-sky-700 transition-all outline-none">
+                              {item.direction === 'Xuất khẩu' ? (
+                                <>
+                                  <option value="XUẤT GIAO THẲNG">XUẤT GIAO THẲNG</option>
+                                  <option value="XUẤT BÃI TÀU">XUẤT BÃI TÀU</option>
+                                </>
+                              ) : (
+                                <>
+                                  <option value="NHẬP GIAO THẲNG">NHẬP GIAO THẲNG</option>
+                                  <option value="NHẬP BÃI">NHẬP BÃI</option>
+                                </>
+                              )}
                             </select>
                           ) : (
                             <span className="text-sky-700 font-medium normal-case text-sm whitespace-nowrap">{item.tacNghiep}</span>

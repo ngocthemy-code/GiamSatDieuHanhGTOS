@@ -268,6 +268,7 @@ export const BerthMonitoring: React.FC<BerthMonitoringProps> = ({
                             <thead>
                                <tr className="bg-[#dae6f3] border-y border-gray-300">
                                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-center">STT</th>
+                                 <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Sà lan</th>
                                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Số xe</th>
                                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Rơ moóc</th>
                                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Tên hàng</th>
@@ -295,6 +296,7 @@ export const BerthMonitoring: React.FC<BerthMonitoringProps> = ({
                                   className={`${selectedRowId === item.id ? 'bg-blue-50/60 ring-1 ring-inset ring-blue-500/20' : 'hover:bg-sky-50/20'} transition-colors cursor-pointer group/row`}
                                 >
                                   <td className="px-4 py-3 text-sm font-semibold text-gray-900 text-center border-r border-slate-100">{idx + 1}</td>
+                                  <td className="px-4 py-3 text-sm font-normal text-gray-700">{item.saLan}</td>
                                   <td className="px-4 py-3 text-sm font-medium text-sky-600 font-mono whitespace-nowrap">{item.soXe}</td>
                                   <td className="px-4 py-3 text-sm font-normal text-gray-500 font-mono whitespace-nowrap">{item.soRomooc}</td>
                                   <td className="px-4 py-3 text-sm font-semibold text-gray-900">{item.tenHang}</td>
