@@ -33,8 +33,15 @@ export const GateEdit: React.FC<GateEditProps> = ({
   onRefresh
 }) => {
   const [userFilter, setUserFilter] = React.useState('ALL');
+  const [tacNghiepFilter, setTacNghiepFilter] = React.useState('ALL');
   const [currentPage, setCurrentPage] = React.useState(1);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const filteredData = mockData.filter(item => {
+    const matchUser = userFilter === 'ALL' || (item as any).user === userFilter || (userFilter === 'Administrator' && !(item as any).user);
+    const matchTacNghiep = tacNghiepFilter === 'ALL' || item.tacNghiep === tacNghiepFilter;
+    return matchUser && matchTacNghiep;
+  });
 
   const renderEmptyState = () => (
     <div className="flex-1 flex flex-col items-center justify-center p-12 bg-slate-50/50">
@@ -69,6 +76,9 @@ export const GateEdit: React.FC<GateEditProps> = ({
         showUserFilter={true}
         userFilter={userFilter}
         setUserFilter={setUserFilter}
+        showTacNghiepFilter={true}
+        tacNghiepFilter={tacNghiepFilter}
+        setTacNghiepFilter={setTacNghiepFilter}
       >
         {isFilterApplied && (
           <button
@@ -103,7 +113,37 @@ export const GateEdit: React.FC<GateEditProps> = ({
                       <div className="flex items-center justify-between gap-2">Số xe <ArrowUpDown size={14} className="text-slate-400" /></div>
                     </th>
                     <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
-                      <div className="flex items-center justify-between gap-2">Rơ moóc <ArrowUpDown size={14} className="text-slate-400" /></div>
+                      <div className="flex items-center justify-between gap-2">Số đăng kiểm <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">Hạn đăng kiểm <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">Khối lượng đầu kéo (KG) <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">Tải trọng đầu kéo (KG) <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">GPLX tài xế <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">Tên tài xế <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">Số remooc <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">Số đăng kiểm <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">Hạn đăng kiểm <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">Khối lượng Remooc (KG) <ArrowUpDown size={14} className="text-slate-400" /></div>
+                    </th>
+                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
+                      <div className="flex items-center justify-between gap-2">Tải trọng Remooc (KG) <ArrowUpDown size={14} className="text-slate-400" /></div>
                     </th>
                     <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
                       <div className="flex items-center justify-between gap-2">Tác nghiệp <ArrowUpDown size={14} className="text-slate-400" /></div>
@@ -112,7 +152,7 @@ export const GateEdit: React.FC<GateEditProps> = ({
                       <div className="flex items-center justify-between gap-2">Tên hàng <ArrowUpDown size={14} className="text-slate-400" /></div>
                     </th>
                     <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
-                      <div className="flex items-center justify-end gap-2">Trọng lượng <ArrowUpDown size={14} className="text-slate-400" /></div>
+                      <div className="flex items-center justify-end gap-2">Trọng lượng (Tấn) <ArrowUpDown size={14} className="text-slate-400" /></div>
                     </th>
                     <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
                       <div className="flex items-center justify-end gap-2">Số lượng <ArrowUpDown size={14} className="text-slate-400" /></div>
@@ -138,11 +178,15 @@ export const GateEdit: React.FC<GateEditProps> = ({
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50">
-                  {mockData.map((row, idx) => {
+                  {filteredData.map((row, idx) => {
                     const isEditing = editingGateId === row.id;
 
                     return (
-                      <tr key={row.id} className={`${isEditing ? 'bg-white' : 'hover:bg-slate-50/30'} transition-colors group/row`}>
+                      <tr
+                        key={row.id}
+                        className={`${isEditing ? 'bg-blue-50/60 ring-1 ring-inset ring-blue-500/20' : 'hover:bg-slate-50/80'} transition-all cursor-pointer group/row`}
+                        onClick={() => setEditingGateId(row.id)}
+                      >
                         <td className="px-4 py-4 text-sm font-semibold text-gray-900 text-center border-r border-slate-50">{idx + 1}</td>
                         <td className="px-4 py-4 text-sm font-semibold text-gray-900 whitespace-nowrap">
                           {row.tau}
@@ -168,9 +212,79 @@ export const GateEdit: React.FC<GateEditProps> = ({
                         </td>
                         <td className="px-4 py-4 whitespace-nowrap">
                           {isEditing ? (
-                            <input defaultValue={row.soRomooc} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-500 w-28 transition-all outline-none" />
+                            <input defaultValue={row.soDangKiemXe || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 w-28 transition-all outline-none" />
                           ) : (
-                            <span className="text-sm text-gray-500 font-mono whitespace-nowrap">{row.soRomooc}</span>
+                            <span className="text-sm text-gray-700 whitespace-nowrap">{row.soDangKiemXe || '---'}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap">
+                          {isEditing ? (
+                            <input defaultValue={row.hanDangKiemXe || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 w-28 transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm text-gray-700 whitespace-nowrap">{row.hanDangKiemXe || '---'}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap text-right">
+                          {isEditing ? (
+                            <input defaultValue={row.khoiLuongDauKeo || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 w-20 text-right transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm text-gray-700 whitespace-nowrap">{row.khoiLuongDauKeo || '---'}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap text-right">
+                          {isEditing ? (
+                            <input defaultValue={row.taiTrongDauKeo || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 w-20 text-right transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm text-gray-700 whitespace-nowrap">{row.taiTrongDauKeo || '---'}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap">
+                          {isEditing ? (
+                            <input defaultValue={row.gplxTaiXe || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 w-28 transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm text-gray-700 whitespace-nowrap">{row.gplxTaiXe || '---'}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap">
+                          {isEditing ? (
+                            <input defaultValue={row.tenTaiXe || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 w-32 transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm text-gray-700 whitespace-nowrap">{row.tenTaiXe || '---'}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap">
+                          {isEditing ? (
+                            <input defaultValue={row.soRomooc || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-500 w-28 transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm text-gray-500 font-mono whitespace-nowrap">{row.soRomooc || '---'}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap">
+                          {isEditing ? (
+                            <input defaultValue={row.soDangKiemRomooc || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 w-28 transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm text-gray-700 whitespace-nowrap">{row.soDangKiemRomooc || '---'}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap">
+                          {isEditing ? (
+                            <input defaultValue={row.hanDangKiemRomooc || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 w-28 transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm text-gray-700 whitespace-nowrap">{row.hanDangKiemRomooc || '---'}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap text-right">
+                          {isEditing ? (
+                            <input defaultValue={row.khoiLuongRomooc || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 w-20 text-right transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm text-gray-700 whitespace-nowrap">{row.khoiLuongRomooc || '---'}</span>
+                          )}
+                        </td>
+                        <td className="px-4 py-4 whitespace-nowrap text-right">
+                          {isEditing ? (
+                            <input defaultValue={row.taiTrongRomooc || ''} className="bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 w-20 text-right transition-all outline-none" />
+                          ) : (
+                            <span className="text-sm text-gray-700 whitespace-nowrap">{row.taiTrongRomooc || '---'}</span>
                           )}
                         </td>
                         <td className="px-4 py-4">
@@ -256,7 +370,7 @@ export const GateEdit: React.FC<GateEditProps> = ({
                 </tbody>
                 <tfoot>
                   <tr className="bg-slate-50 font-bold border-t-2 border-slate-200">
-                    <td colSpan={7} className="px-4 py-4 text-right text-slate-500 uppercase text-[10px]">Tổng cộng:</td>
+                    <td colSpan={17} className="px-4 py-4 text-right text-slate-500 uppercase text-[10px]">Tổng cộng:</td>
                     <td className="px-4 py-4 text-right text-red-600 text-[13px]">{totalWeight.toLocaleString('vi-VN')} Tấn</td>
                     <td colSpan={7} className="px-4 py-4"></td>
                   </tr>
@@ -269,7 +383,7 @@ export const GateEdit: React.FC<GateEditProps> = ({
               <div className="flex items-center gap-4 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
                   <span>Số dòng/trang:</span>
-                  <select 
+                  <select
                     value={rowsPerPage}
                     onChange={(e) => setRowsPerPage(Number(e.target.value))}
                     className="h-8 px-2 bg-white border border-gray-300 rounded text-sm text-gray-700 focus:border-blue-500 outline-none cursor-pointer"
@@ -286,20 +400,20 @@ export const GateEdit: React.FC<GateEditProps> = ({
               </div>
 
               <div className="flex items-center space-x-1">
-                <button 
+                <button
                   disabled={currentPage === 1}
                   className="w-8 h-8 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   <ChevronLeft size={16} />
                 </button>
-                
+
                 <button className="w-8 h-8 flex items-center justify-center rounded border border-blue-600 bg-blue-600 text-white font-semibold">1</button>
                 <button className="w-8 h-8 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 transition-colors">2</button>
                 <button className="w-8 h-8 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 transition-colors">3</button>
                 <span className="px-1 text-gray-400">...</span>
                 <button className="w-8 h-8 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 transition-colors">10</button>
 
-                <button 
+                <button
                   className="w-8 h-8 flex items-center justify-center rounded border border-gray-300 bg-white text-gray-600 hover:bg-gray-50 transition-colors"
                 >
                   <ChevronRight size={16} />

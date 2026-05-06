@@ -46,6 +46,8 @@ export const GateMonitoring: React.FC<GateMonitoringProps> = ({
   allVessels,
   tacNghiepOptions
 }) => {
+  const [selectedRowId, setSelectedRowId] = React.useState<string | null>(null);
+
   const renderEmptyState = () => (
     <div className="flex-1 flex flex-col items-center justify-center p-12 bg-slate-50/50">
       <h3 className="text-slate-800 font-bold text-lg mb-2">Chưa tìm thấy dữ liệu</h3>
@@ -183,10 +185,20 @@ export const GateMonitoring: React.FC<GateMonitoringProps> = ({
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-center">STT</th>
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Số lệnh</th>
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Số xe</th>
-                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Rơ moóc</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Số đăng kiểm</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Hạn đăng kiểm</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Khối lượng đầu kéo (KG)</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Tải trọng đầu kéo (KG)</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">GPLX tài xế</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Tên tài xế</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Số remooc</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Số đăng kiểm</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Hạn đăng kiểm</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Khối lượng Remooc (KG)</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Tải trọng Remooc (KG)</th>
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Tác nghiệp</th>
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Tên hàng</th>
-                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-right">Trọng lượng</th>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-right">Trọng lượng (Tấn)</th>
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-right">Số lượng</th>
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Tàu</th>
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Vị trí/Kho</th>
@@ -206,12 +218,23 @@ export const GateMonitoring: React.FC<GateMonitoringProps> = ({
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.2, delay: idx * 0.02 }}
                       layout
-                      className="hover:bg-slate-50 transition-colors cursor-pointer group"
+                      onClick={() => setSelectedRowId(row.id === selectedRowId ? null : row.id)}
+                      className={`${selectedRowId === row.id ? 'bg-blue-50/60 ring-1 ring-inset ring-blue-500/20' : 'hover:bg-slate-50'} transition-colors cursor-pointer group`}
                     >
                       <td className="px-4 py-3 text-sm font-semibold text-gray-900 text-center border-r border-slate-100">{idx + 1}</td>
                       <td className="px-4 py-3 text-sm font-normal text-gray-700">{row.soLenh}</td>
                       <td className="px-4 py-3 text-sm font-medium text-sky-600 font-mono whitespace-nowrap">{row.soXe}</td>
-                      <td className="px-4 py-3 text-sm font-normal text-gray-500 font-mono whitespace-nowrap">{row.soRomooc}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-700 whitespace-nowrap">{row.soDangKiemXe || '---'}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-700 whitespace-nowrap">{row.hanDangKiemXe || '---'}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-700 text-right">{row.khoiLuongDauKeo || '---'}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-700 text-right">{row.taiTrongDauKeo || '---'}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-700 whitespace-nowrap">{row.gplxTaiXe || '---'}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-700 whitespace-nowrap">{row.tenTaiXe || '---'}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-500 font-mono whitespace-nowrap">{row.soRomooc || '---'}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-700 whitespace-nowrap">{row.soDangKiemRomooc || '---'}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-700 whitespace-nowrap">{row.hanDangKiemRomooc || '---'}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-700 text-right">{row.khoiLuongRomooc || '---'}</td>
+                      <td className="px-4 py-3 text-sm font-normal text-gray-700 text-right">{row.taiTrongRomooc || '---'}</td>
                       <td className="px-4 py-3 whitespace-nowrap">
                         <span className={`inline-block px-1.5 py-0.5 rounded-md text-sm font-medium normal-case transition-all whitespace-nowrap ${row.tacNghiep.includes('BÃI') ? 'bg-amber-50 text-amber-600 border border-amber-100' :
                           row.tacNghiep.includes('GIAO THẲNG') ? 'bg-blue-50 text-blue-600 border border-blue-100' :
@@ -240,9 +263,7 @@ export const GateMonitoring: React.FC<GateMonitoringProps> = ({
                 </AnimatePresence>
                 {filteredData.length > 0 && (
                   <tr className="bg-slate-50 border-t-2 border-slate-200">
-                    <td colSpan={2} className="px-4 py-3 text-right text-slate-500 uppercase text-xs font-bold">Tổng cộng:</td>
-                    <td className="px-4 py-3"></td>
-                    <td colSpan={3} className="px-4 py-3"></td>
+                    <td colSpan={16} className="px-4 py-3 text-right text-slate-500 uppercase text-xs font-bold">Tổng cộng:</td>
                     <td className="px-4 py-3 text-right font-black text-red-600 text-base">
                       {filteredData.reduce((sum, row) => sum + (parseFloat(row.trongLuong.replace(/[^\d.]/g, '')) || 0), 0).toFixed(1)} Tấn
                     </td>
@@ -254,7 +275,7 @@ export const GateMonitoring: React.FC<GateMonitoringProps> = ({
                 )}
                 {filteredData.length === 0 && (
                   <tr>
-                    <td colSpan={14} className="py-12 text-center text-slate-400 font-medium">
+                    <td colSpan={24} className="py-12 text-center text-slate-400 font-medium">
                       Không tìm thấy dữ liệu phù hợp
                     </td>
                   </tr>

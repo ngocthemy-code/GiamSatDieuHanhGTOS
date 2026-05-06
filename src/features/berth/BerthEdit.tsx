@@ -34,12 +34,19 @@ export const BerthEdit: React.FC<BerthEditProps> = ({
   onRefresh
 }) => {
   const [userFilter, setUserFilter] = React.useState('ALL');
+  const [tacNghiepFilter, setTacNghiepFilter] = React.useState('ALL');
   const [currentPage, setCurrentPage] = React.useState(1);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const allItems = berthGroups.flatMap(group =>
     group.items.map(item => ({ ...item, vesselName: group.tau }))
   );
+
+  const filteredData = allItems.filter(item => {
+    const matchUser = userFilter === 'ALL' || (item as any).user === userFilter || (userFilter === 'Administrator' && !(item as any).user);
+    const matchTacNghiep = tacNghiepFilter === 'ALL' || item.tacNghiep === tacNghiepFilter;
+    return matchUser && matchTacNghiep;
+  });
 
   const renderEmptyState = () => (
     <div className="flex-1 flex flex-col items-center justify-center p-12 bg-slate-50/50">
@@ -69,6 +76,9 @@ export const BerthEdit: React.FC<BerthEditProps> = ({
         showUserFilter={true}
         userFilter={userFilter}
         setUserFilter={setUserFilter}
+        showTacNghiepFilter={true}
+        tacNghiepFilter={tacNghiepFilter}
+        setTacNghiepFilter={setTacNghiepFilter}
       >
         {isFilterApplied && (
           <button
@@ -95,9 +105,6 @@ export const BerthEdit: React.FC<BerthEditProps> = ({
                     </th>
                     <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
                       <div className="flex items-center justify-between gap-2">Tàu/chuyến <ArrowUpDown size={14} className="text-slate-400" /></div>
-                    </th>
-                    <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
-                      <div className="flex items-center justify-between gap-2">Sà lan <ArrowUpDown size={14} className="text-slate-400" /></div>
                     </th>
                     <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle cursor-pointer hover:bg-blue-100 transition-colors">
                       <div className="flex items-center justify-between gap-2">Số xe <ArrowUpDown size={14} className="text-slate-400" /></div>
@@ -150,23 +157,19 @@ export const BerthEdit: React.FC<BerthEditProps> = ({
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50">
-                  {allItems.map((item, idx) => {
+                  {filteredData.map((item, idx) => {
                     const isRowEditing = editingBerthId === item.id;
 
                     return (
-                      <tr key={item.id} className={`${isRowEditing ? 'bg-white' : 'hover:bg-slate-50/30'} transition-all group/row`}>
+                      <tr 
+                        key={item.id} 
+                        className={`${isRowEditing ? 'bg-blue-50/60 ring-1 ring-inset ring-blue-500/20' : 'hover:bg-slate-50/30'} transition-all cursor-pointer group/row`}
+                        onClick={() => setEditingBerthId(item.id)}
+                      >
                         <td className="px-4 py-4 text-sm font-semibold text-gray-900 text-center border-r border-slate-100">{idx + 1}</td>
 
                         <td className="px-4 py-4 text-sm font-semibold text-gray-900">
                           {item.vesselName}
-                        </td>
-
-                        <td className="px-4 py-4">
-                          {isRowEditing ? (
-                            <input defaultValue={item.saLan} className="w-16 bg-transparent border border-transparent hover:bg-slate-100/50 focus:bg-white focus:border-slate-200 rounded px-2 py-1 text-sm font-normal text-gray-700 transition-all outline-none" />
-                          ) : (
-                            <span className="text-sm font-normal text-gray-700">{item.saLan}</span>
-                          )}
                         </td>
 
                         <td className="px-4 py-4 whitespace-nowrap">

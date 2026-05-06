@@ -4,7 +4,17 @@ export interface GateOperation {
   soVanDon?: string;
   soToKhai?: string;
   soXe: string;
+  soDangKiemXe?: string;
+  hanDangKiemXe?: string;
+  khoiLuongDauKeo?: string;
+  taiTrongDauKeo?: string;
+  gplxTaiXe?: string;
+  tenTaiXe?: string;
   soRomooc: string;
+  soDangKiemRomooc?: string;
+  hanDangKiemRomooc?: string;
+  khoiLuongRomooc?: string;
+  taiTrongRomooc?: string;
   tau: string;
   tenHang: string;
   loaiHang: string;

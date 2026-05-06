@@ -363,6 +363,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ title, isFilterApplied
             <table className="w-full min-w-full border-collapse text-left">
               <thead className="bg-[#dae6f3] border-y border-gray-300 sticky top-0 z-10">
                 <tr>
+                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-center">STT</th>
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-center">ID Log</th>
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-center">Người thực hiện</th>
                   <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-center">Hành động</th>
@@ -375,7 +376,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ title, isFilterApplied
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {filteredData.map((item) => {
+                {filteredData.map((item, idx) => {
                   const isSelected = selectedLog?.id === item.id;
                   return (
                     <tr
@@ -383,7 +384,8 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ title, isFilterApplied
                       className={`${isSelected ? 'bg-blue-50/60 ring-1 ring-inset ring-blue-500/20' : 'hover:bg-slate-50/80'} transition-all cursor-pointer group`}
                       onClick={() => setSelectedLog(item)}
                     >
-                      <td className="px-4 py-4 text-sm font-mono font-semibold text-gray-900 border-l-4 border-transparent group-hover:border-blue-300 data-[selected=true]:border-blue-500 transition-colors whitespace-nowrap text-center" data-selected={isSelected}>{item.id}</td>
+                      <td className="px-4 py-4 text-sm font-semibold text-gray-900 text-center border-l-4 border-transparent data-[selected=true]:border-blue-500 transition-colors" data-selected={isSelected}>{idx + 1}</td>
+                      <td className="px-4 py-4 text-sm font-mono font-semibold text-gray-900 whitespace-nowrap text-center">{item.id}</td>
                       <td className="px-4 py-4 whitespace-nowrap text-center">
                         <span className="text-sm font-medium text-gray-900">{item.user}</span>
                       </td>

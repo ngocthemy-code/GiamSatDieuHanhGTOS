@@ -11,6 +11,9 @@ interface FilterSectionProps {
   showUserFilter?: boolean;
   userFilter?: string;
   setUserFilter?: (val: string) => void;
+  showTacNghiepFilter?: boolean;
+  tacNghiepFilter?: string;
+  setTacNghiepFilter?: (val: string) => void;
   children?: React.ReactNode;
 }
 
@@ -23,6 +26,9 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
   showUserFilter = false,
   userFilter = 'ALL',
   setUserFilter,
+  showTacNghiepFilter = false,
+  tacNghiepFilter = 'ALL',
+  setTacNghiepFilter,
   children
 }) => {
   return (
@@ -87,6 +93,23 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
                   <option value="Trần Thị B" />
                 </datalist>
               </div>
+            </div>
+          )}
+
+          {showTacNghiepFilter && (
+            <div className="flex items-center">
+              <span className="text-xs font-semibold text-gray-500 uppercase mr-2">Tác nghiệp:</span>
+              <select
+                value={tacNghiepFilter}
+                onChange={(e) => setTacNghiepFilter?.(e.target.value)}
+                className="h-10 px-3 bg-white border border-gray-300 rounded-md text-sm text-gray-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all min-w-[160px] cursor-pointer"
+              >
+                <option value="ALL">Tất cả</option>
+                <option value="NHẬP BÃI">NHẬP BÃI</option>
+                <option value="XUẤT BÃI">XUẤT BÃI</option>
+                <option value="NHẬP GIAO THẲNG">NHẬP GIAO THẲNG</option>
+                <option value="XUẤT GIAO THẲNG">XUẤT GIAO THẲNG</option>
+              </select>
             </div>
           )}
 

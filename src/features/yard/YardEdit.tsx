@@ -154,7 +154,11 @@ export const YardEdit: React.FC<YardEditProps> = ({
                     const isRowEditing = editingYardId === item.id;
 
                     return (
-                      <tr key={item.id} className={`${isRowEditing ? 'bg-indigo-50/30' : 'hover:bg-slate-50/30'} transition-all group/row`}>
+                      <tr 
+                        key={item.id} 
+                        className={`${isRowEditing ? 'bg-blue-50/60 ring-1 ring-inset ring-blue-500/20' : 'hover:bg-slate-50/30'} transition-all cursor-pointer group/row`}
+                        onClick={() => setEditingYardId(item.id)}
+                      >
                         <td className="px-4 py-3 text-sm font-semibold text-gray-900 text-center border-r border-slate-100">{idx + 1}</td>
 
                         <td className="px-4 py-3">

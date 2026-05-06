@@ -48,6 +48,8 @@ export const BerthMonitoring: React.FC<BerthMonitoringProps> = ({
   isFilterApplied,
   onRefresh
 }) => {
+  const [selectedRowId, setSelectedRowId] = React.useState<string | null>(null);
+
   const renderEmptyState = () => (
     <div className="flex-1 flex flex-col items-center justify-center p-12 bg-slate-50/50">
       <h3 className="text-slate-800 font-bold text-lg mb-2">Chưa tìm thấy dữ liệu</h3>
@@ -266,7 +268,6 @@ export const BerthMonitoring: React.FC<BerthMonitoringProps> = ({
                             <thead>
                                <tr className="bg-[#dae6f3] border-y border-gray-300">
                                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-center">STT</th>
-                                 <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Sà lan</th>
                                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Số xe</th>
                                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Rơ moóc</th>
                                  <th className="px-4 py-3 text-sm font-medium text-[#172b4d] border-r border-gray-300 whitespace-nowrap align-middle text-left">Tên hàng</th>
@@ -288,9 +289,12 @@ export const BerthMonitoring: React.FC<BerthMonitoringProps> = ({
                             </thead>
                             <tbody className="divide-y divide-slate-50">
                               {group.items.map((item, idx) => (
-                                <tr key={item.id} className="hover:bg-sky-50/20 transition-colors group/row">
+                                <tr 
+                                  key={item.id} 
+                                  onClick={() => setSelectedRowId(item.id === selectedRowId ? null : item.id)}
+                                  className={`${selectedRowId === item.id ? 'bg-blue-50/60 ring-1 ring-inset ring-blue-500/20' : 'hover:bg-sky-50/20'} transition-colors cursor-pointer group/row`}
+                                >
                                   <td className="px-4 py-3 text-sm font-semibold text-gray-900 text-center border-r border-slate-100">{idx + 1}</td>
-                                  <td className="px-4 py-3 text-sm font-normal text-gray-700">{item.saLan}</td>
                                   <td className="px-4 py-3 text-sm font-medium text-sky-600 font-mono whitespace-nowrap">{item.soXe}</td>
                                   <td className="px-4 py-3 text-sm font-normal text-gray-500 font-mono whitespace-nowrap">{item.soRomooc}</td>
                                   <td className="px-4 py-3 text-sm font-semibold text-gray-900">{item.tenHang}</td>

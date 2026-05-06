@@ -52,6 +52,8 @@ export const YardMonitoring: React.FC<YardMonitoringProps> = ({
   isFilterApplied,
   onRefresh
 }) => {
+  const [selectedRowId, setSelectedRowId] = React.useState<string | null>(null);
+
   const renderEmptyState = () => (
     <div className="flex-1 flex flex-col items-center justify-center p-12 bg-slate-50/50">
       <h3 className="text-slate-800 font-bold text-lg mb-2">Chưa tìm thấy dữ liệu</h3>
@@ -255,7 +257,11 @@ export const YardMonitoring: React.FC<YardMonitoringProps> = ({
                               </thead>
                               <tbody className="divide-y divide-slate-50">
                                 {filteredItems.map((item, idx) => (
-                                  <tr key={item.id} className="hover:bg-sky-50/20 transition-colors group/row">
+                                  <tr 
+                                    key={item.id} 
+                                    onClick={() => setSelectedRowId(item.id === selectedRowId ? null : item.id)}
+                                    className={`${selectedRowId === item.id ? 'bg-blue-50/60 ring-1 ring-inset ring-blue-500/20' : 'hover:bg-sky-50/20'} transition-colors cursor-pointer group/row`}
+                                  >
                                     <td className="px-4 py-3 text-sm font-semibold text-gray-900 text-center border-r border-slate-100">{idx + 1}</td>
                                     <td className="px-4 py-3 text-sm font-semibold text-gray-900">{item.tau}</td>
                                     <td className="px-4 py-3 text-sm font-medium text-sky-600 font-mono">{item.soXe}</td>
